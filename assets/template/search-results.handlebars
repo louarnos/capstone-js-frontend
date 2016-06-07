@@ -1,0 +1,23 @@
+
+{{#each events }}
+<div class='well'>
+  <div class="media">
+    <div class="media-left">
+      <a href="">
+        <img class="" src={{this.image_url}} onError="this.src='http://i.imgur.com/r7UiMQr.png';">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="this.title">{{this.title}}</h4>
+      <p>
+        {{this.venue_name}}: <br>
+        {{this.venue_address}}
+        {{this.city_name}}, {{this.region_name}}, {{this.country_name}}
+        <br>
+      </p>
+    </div>
+    {{this.description}}
+  </div>
+  <button type="submit" class="btn btn-default add-event-btn" data-event-id="{{this.id}}">Save this Event</button>
+</div>
+{{/each}}

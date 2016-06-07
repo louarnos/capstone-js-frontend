@@ -11,6 +11,16 @@ const eventfulSearch = (success, failure, data) => {
   }).done(success).fail(failure);
 };
 
+const addEvent = (success, failure, data) => {
+  console.log('add event queued');
+  $.ajax({
+    method : 'POST',
+      url : app.api + '/events',
+      data
+  }).done(success).fail(failure);
+};
+
 module.exports = {
   eventfulSearch,
+  addEvent,
 };
