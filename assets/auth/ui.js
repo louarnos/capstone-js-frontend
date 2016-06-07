@@ -2,9 +2,10 @@
 
 const app = require('../app-data.js');
 const authApi = require('./api.js');
-
+const authUi = require('./ui.js')
 
 const signOutSuccess = (data) => {
+  console.log('signed-out', data);
 
 };
 
@@ -13,6 +14,9 @@ const signOutSuccess = (data) => {
 const signInSuccess = (data) => {
   console.log(data);
   console.log('signed-in');
+  app.user = data.user;
+  $('#sign-in-form').addClass('hidden');
+  $('#eventful-search-form').removeClass('hidden');
 };
 
 const changePWSuccess = (data) => {
@@ -25,8 +29,10 @@ const changePWFail = (error) => {
 
 const regSuccess = (data) => {
   console.log(data);
-  app.user = data;
-  $('sign-up-form').hide();
+  app.user = data.user;
+  // authApi.signIn(authUi.signInSuccess, authUi.signInFail, data);
+  $('#sign-up-form').addClass('hidden');
+  $('#sign-in-form').removeClass('hidden');
 };
 
 
@@ -36,7 +42,7 @@ const signInFail = (error) => {
   console.log('sign-in-failed');
 };
 
-const regFail = (error) => {
+const regFailure = (error) => {
   console.log(error);
 };
 
@@ -56,6 +62,6 @@ module.exports = {
   changePWSuccess,
   regSuccess,
   signInFail,
-  regFail,
+  regFailure,
   changePWFail
 };

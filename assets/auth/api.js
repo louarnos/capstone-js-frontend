@@ -22,6 +22,7 @@ const signIn = (success, failure, data) => {
 
 const signOut = (success, failure) => {
   console.log("Sign out request queued");
+  debugger;
   $.ajax({
     method: 'DELETE',
     url: app.api + '/sign-out/' + app.user._id,
