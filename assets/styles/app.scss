@@ -1,0 +1,121 @@
+// @import 'bootstrap';
+// @import 'bootstrap/theme';
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$yell: #E2DA99;
+$brwn: #342900;
+$blu: #5E9CA0;
+$lite-blu: #73AFB6;
+$drk-brwn: #2B2301;
+$normal-black: #000;
+$form-background: rgba(255, 255, 255, .5);
+$font-base: 2em;
+
+body {
+  font-family: Lato;
+}
+
+.hidden{
+  display: none;
+}
+
+.landing-img-placeholder {
+  visibility: hidden;
+}
+
+.navbar-default {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  border-bottom: 5px $blu solid;
+ }
+
+.landing {
+  background-image: url('http://i.imgur.com/yo0dgKc.png');
+  background-repeat: no-repeat;
+  // background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
+  // height: auto;
+  position: relative;
+  // width: auto;
+}
+
+.landing-img {
+  height: auto;
+  width: auto;
+}
+
+.logo-div {
+  padding-bottom: 2%;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+  color: $blu;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  font-size: $font-base*2;
+}
+
+.auth-form-container {
+  padding-top: 2%;
+  background-color: $form-background;
+  border: 2px white solid;
+  border-radius: 20px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+}
+
+.auth-form-container .auth-form-element {
+  left: 50%;
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+}
+
+.auth-form-container .auth-form-element .btn {
+  width: 20%;
+}
+
+.btn-primary {
+  background: $blu;
+  border-color: $normal-black
+}
+
+.btn-default {
+  border-color: $normal-black
+}
+
+.btn-primary:hover {
+  border-color: $yell;
+  background: $blu;
+  color: $normal-black
+}
+
+.btn-default:hover {
+  border-color: $yell;
+}
+
+.auth-form-title {
+  padding-top: 5%;
+  left: 50%;
+  font-size: 1.5em;
+}
+
+.auth-form {
+  color: $normal-black;
+  // text-shadow: -.2px 0 $blu, 0 .2px $blu, .2px 0 $blu, 0 -.2px $blu;
+  width: 45%;
+}

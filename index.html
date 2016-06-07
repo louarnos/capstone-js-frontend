@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>R.Eventist</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
+  <body class="container-fluid">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="nav navbar-nav">
+            <li id='nav-show-users'>Users</li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id='nav-change-password'>Change Password</li>
+            <li id='nav-sign-out'>Sign Out</li>
+            <li id='nav-sign-up'>Sign Up</li>
+            <li id='nav-sign-in'>Sign In</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="landing landing-img">
+      <h1 class="logo">R.Eventist</h1>
+
+    <!-- Auth Forms }}-->
+
+    <!-- Sign up }}-->
+      <form class='form-group auth-form-container hidden' id ="sign-up-form">
+        <h3 class ='auth-form-title auth-form-element'> Sign up </h3>
+        <div class="auth-form-element">
+          <label class="">Email</label>
+          <input type="text" class="form-control" name="credentials[email]" id="formGroupExampleInput" placeholder="Email">
+        </div>
+
+        <div class="auth-form-element">
+          <label class="">Username</label>
+          <input type="text" class="form-control" name="credentials[username]" id="formGroupExampleInput" placeholder="Username">
+        </div>
+
+        <div class="auth-form-element">
+          <label class="">Password</label>
+          <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="Password">
+        </div>
+
+        <div class="auth-form-element">
+          <label class="">Password Confirmation</label>
+          <input type="password" class="form-control" name="credentials[password_confirmation]" id="formGroupExampleInput" placeholder="Confirm Password">
+        </div>
+
+        <button type="submit" class="btn btn-default auth-form-element" id="sign-up">Sign-Up</button>
+      </form>
+
+
+      <!-- Sign in }}-->
+
+      <form class='form-group auth-form-container hidden' id ="sign-in-form">
+        <h3 class ='auth-form-title auth-form-element'> Sign In </h3>
+        <div class="auth-form-element">
+          <label class="">Email</label>
+          <input type="text" class="form-control" name="credentials[email]" id="formGroupExampleInput" placeholder="Email">
+        </div>
+
+
+        <div class="auth-form-element">
+          <label class="">Password</label>
+          <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="Password">
+        </div>
+
+        <button type="submit" class="btn btn-default auth-form-element" id="sign-in">Sign-Up</button>
+      </form>
+
+
+      <!-- Change PW }}-->
+      <form class='form-group auth-form-container hidden' id="change-password-form">
+        <h3 class ='auth-form-title auth-form-element'> Change Password </h3>
+        <div class="auth-form-element">
+          <label class="">Email</label>
+          <input type="text" class="form-control" name="credentials[email]" id="formGroupExampleInput" placeholder="Email">
+        </div>
+
+
+        <div class="auth-form-element">
+          <label class="">Password</label>
+          <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="Old Password">
+        </div>
+
+        <div class="auth-form-element">
+          <label class="">Password</label>
+          <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="New Password">
+        </div>
+
+        <button type="submit" class="btn btn-default auth-form-element" id="change-password">Sign-Up</button>
+      </form>
+
+
+
+
+
+
+
+      <img class="landing-img-placeholder" src="http://i.imgur.com/yo0dgKc.png"/>
+    </div>
+  </body>
+</html>
