@@ -16,7 +16,10 @@ const addEvent = (success, failure, data) => {
   $.ajax({
     method : 'POST',
       url : app.api + '/events',
-      data
+      data,
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
   }).done(success).fail(failure);
 };
 

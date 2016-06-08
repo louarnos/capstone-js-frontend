@@ -17,6 +17,20 @@ const eventfulSearchSuccess = (data) => {
   $('#main-content').append(loadSearchResults({
     events: app.eventfulSearchResults
   }));
+  $('.add-event-btn').on('click', function (event){
+    event.preventDefault();
+    console.log('clicked');
+    let clickedEventID = this.dataset.eventid;
+    console.log(clickedEventID);
+    let match;
+    app.eventfulSearchResults.forEach(function (concert) {
+        if(concert.id === clickedEventID) {
+          match = concert;
+        }
+      });
+    console.log(match);
+    appApi.addEvent(addEventSuccess, addEventFailure, match);
+  });
 };
 
 const eventfulSearchFailure = (data) => {
@@ -24,7 +38,18 @@ const eventfulSearchFailure = (data) => {
   app.eventfulSearchResults = data;
 };
 
+const addEventSuccess = (data) => {
+  console.log(data, 'success event added');
+};
+
+const addEventFailure = (data) => {
+  console.log(data, 'failure event not added')
+};
+
+
 module.exports = {
   eventfulSearchSuccess,
   eventfulSearchFailure,
+  addEventSuccess,
+  addEventFailure,
 };
