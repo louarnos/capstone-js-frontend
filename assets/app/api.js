@@ -56,7 +56,7 @@ const getAllUsers = (success, failure) => {
 
 const addFollowee = (success, failure, data) => {
   $.ajax({
-    method : 'PUT',
+    method : 'PATCH',
       url : app.api + '/add-followee',
       data : {
         followee_id: data
@@ -69,7 +69,7 @@ const addFollowee = (success, failure, data) => {
 
 const removeFollowee = (success, failure, data) => {
   $.ajax({
-    method : 'PUT',
+    method : 'PATCH',
       url : app.api + '/remove-followee',
       data : {
         followee_id: data

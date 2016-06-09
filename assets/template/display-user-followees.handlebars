@@ -1,4 +1,5 @@
-{{!-- {{#each followees}} --}}
+{{!-- {{#each followee}} --}}
+
   <div class="row user-row">
     <div class="col-xs-6 col-md-3">
       <a href="#" class="thumbnail">
@@ -8,8 +9,8 @@
     <div class='well'>
       <h3>{{followee.username}}<h3>
         <p>{{followee.email}}</p>
-        <button type="button" class="btn btn-default unfollow-btn" data-eventId="{{this._id}}">Unfollow</button>
+        <button type="button" class="btn btn-default unfollow-btn" data-eventId="{{followee._id}}">Unfollow</button>
     </div>
   </div>
-  
+
 {{!-- {{/each}} --}}

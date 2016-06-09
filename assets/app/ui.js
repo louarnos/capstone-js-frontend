@@ -8,9 +8,11 @@ const displayUserEvents = require('../template/user-events.handlebars');
 const displayAllUsers = require('../template/display-all-users.handlebars');
 const displayUserFollowees = require('../template/display-user-followees.handlebars');
 
+
 const getOneUserFailure = (data) => {
   console.log('get one user fail');
   console.log(data);
+
 };
 
 const eventfulSearchSuccess = (data) => {
@@ -24,7 +26,6 @@ const eventfulSearchSuccess = (data) => {
       converted = '';
     }
     app.eventfulSearchResults[index].description = converted;
-
   });
 
   $('#main-content').html(loadSearchResults({
@@ -72,8 +73,8 @@ const deleteEventFailure = (data) => {
 };
 
 const getOneUserSuccess = (data) => {
-  console.log('get one user success');
-  console.log(data.user, app.user);
+  // console.log('get one user success');
+  // console.log(data.user, app.user);
   let token = app.user.token;
   app.user = data.user;
   app.user.token = token;
@@ -84,20 +85,17 @@ const getOneUserSuccess = (data) => {
 
 };
 
-
-
 const getAllUsersSuccess = (data) => {
-  console.log('got all userss');
+  // console.log('got all userss');
   app.allUsers = data.users;
   for(let i = 0; i< app.allUsers.length; i++){
     for(let j = 0; j <app.user.followee.length; j++){
       if(app.user.followee[j].followee_id === app.allUsers[i]._id){
         app.allUsers[i].followed = true;
-        console.log('true', app.allUsers[i]);
+        // console.log('true', app.allUsers[i]);
       }
     }
   }
-
   $('.find-new-friends-div').html('');
   $('.find-new-friends-div').append(displayAllUsers({
     users: app.allUsers
@@ -159,6 +157,14 @@ const getFolloweeFailure = (data) => {
 
 const removeFolloweeSuccessTwo = (data) => {
   console.log('success followee removed')
+  appApi.getOneUser(getOneUserSuccess,
+                    getOneUserFailure,
+                    app.user._id);
+  app.user.followee.forEach(function(followee){
+    appApi.getOneUser(getFolloweeSuccess,
+                      getFolloweeFailure,
+                      followee.followee_id);
+                    });
 };
 
 

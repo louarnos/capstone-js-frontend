@@ -6,7 +6,6 @@ const appUi = require('./ui.js');
 const displayUserEvents = require('../template/user-events.handlebars');
 const findEventById = require('../../lib/pull-event-from-array-by-id.js');
 
-
 const addHandlers = () => {
   // NAV EVENTS
   $('#nav-sign-up').on('click', function(){
@@ -60,28 +59,27 @@ const addHandlers = () => {
     event.preventDefault();
     $('.user-followees-div').html('');
     app.user.followee.forEach(function(followee){
-      appApi.getOneUser(appUi.getFolloweeSuccess,
-                        appUi.getFolloweeFailure,
-                        followee.followee_id);
+    appApi.getOneUser(appUi.getFolloweeSuccess,
+                      appUi.getFolloweeFailure,
+                      followee.followee_id);
       });
     });
-  };
 
   $(document).on('click','.unfollow-btn',function(){
-    console.log('clicked unfollow');
+    let id = $(event.target).data('eventid');
+    for (let i = 0; i < app.user.followee.length; i++) {
+      if (app.user.followee[i].followee_id === id) {
+        app.user.followee.splice(i, 1);
+      }
+    }
+
     appApi.removeFollowee(appUi.removeFolloweeSuccessTwo,
                           appUi.removeFolloweeFailure,
                           this.dataset.eventid);
 
-    $('.user-followees-div').html('');
-    appApi.getOneUser(appUi.getOneUserSuccess, appUi.getOneUserFailure, app.user._id);
-    app.user.followee.forEach(function(followee){
-      appApi.getOneUser(appUi.getFolloweeSuccess,
-                        appUi.getFolloweeFailure,
-                        followee.followee_id);
-                      });
-                    });
 
+      $('.user-followees-div').html('');
+                    });
 
 
 $(document).on('click', '.remove-event-btn', function(event){
@@ -98,6 +96,7 @@ $(document).on('click', '.remove-event-btn', function(event){
     event.preventDefault();
     appApi.getAllUsers(appUi.getAllUsersSuccess, appUi.getAllUsersFailure);
   });
+};
 
 module.exports = {
   addHandlers,
