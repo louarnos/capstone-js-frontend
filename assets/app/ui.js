@@ -41,11 +41,6 @@ const eventfulSearchSuccess = (data) => {
     appApi.addEvent(addEventSuccess, addEventFailure, eventToAdd);
   });
 
-  $('.remove-event-btn').on('click', function(event){
-    event.preventDefault();
-    let eventToRemove = findEventById(app.user.events, this.dataset.eventid);
-    appApi.removeEvent(deleteEventSuccess, deleteEventFailure, eventToRemove._id);
-  });
   $('html, body').animate({
     scrollTop: $("#content-div").offset().top
 }, 1000);
@@ -87,11 +82,6 @@ const getOneUserSuccess = (data) => {
     events: app.user.events
   }));
 
-  $('.remove-event-btn').on('click', function(event){
-    event.preventDefault();
-    let eventToRemove = findEventById(app.user.events, this.dataset.eventid);
-    appApi.removeEvent(deleteEventSuccess, deleteEventFailure, eventToRemove._id);
-  });
 };
 
 
