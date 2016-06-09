@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>R.Eventist</title>
+    <title>Eventist</title>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
     <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="https://use.fontawesome.com/8a7b90ba63.js"></script>
     <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
   </head>
   <body class="container-fluid">
+    <h1 class="logo">Eventist</h1>
+
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
-            <li id='nav-show-users'>Users</li>
+            <li class='nav-tab'><a data-toggle="tab" href="#sectionB" class="activate-user-events-display">Your Events</a></li>
+            <li class='nav-tab'><a data-toggle="tab" href="#sectionC">Friends</a></li>
+            <li class='nav-tab'><a data-toggle="tab" href="#sectionD" class="find-new-friends-tab">Find New Friends</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id='nav-change-password'>Change Password</li>
-            <li id='nav-sign-out'>Sign Out</li>
-            <li id='nav-sign-up'>Sign Up</li>
-            <li id='nav-sign-in'>Sign In</li>
+            <li id='nav-change-password' class="nav-tab hidden"><a data-toggle="tab">Change Password</a></li>
+            <li id='nav-sign-out' class="nav-tab hidden"><a data-toggle="tab">Sign Out</a></li>
+            <li id='nav-sign-up' class="nav-tab"><a data-toggle="tab">Sign Up</a></li>
+            <li id='nav-sign-in' class="nav-tab"><a data-toggle="tab">Sign In</a></li>
           </ul>
         </div>
       </div>
     </nav>
+
     <div class="landing landing-img">
-      <h1 class="logo">R.Eventist</h1>
+
 
     <!-- Eventful Seach Form }}-->
 
@@ -36,7 +42,7 @@
           <div class="auth-form-element form-group">
             <input type="text" class="input-group form-control" name="location" id="formGroupExampleInput" placeholder="Enter Location">
           </div>
-          <button type="submit" class="btn btn-primary auth-form-element" >
+          <button type="submit" class="btn btn-primary auth-form-element auth-btn" >
             Search
           </button>
         </div>
@@ -69,7 +75,7 @@
           <input type="password" class="form-control" name="credentials[password_confirmation]" id="formGroupExampleInput" placeholder="Confirm Password">
         </div>
 
-        <button type="submit" class="btn btn-default auth-form-element" id="sign-up">Sign-Up</button>
+        <button type="submit" class="btn btn-default auth-form-element auth-btn" id="sign-up">Sign-Up</button>
       </form>
 
 
@@ -88,7 +94,7 @@
           <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="Password">
         </div>
 
-        <button type="submit" class="btn btn-default auth-form-element" id="sign-in">Sign-In</button>
+        <button type="submit" class="btn btn-default auth-form-element auth-btn" id="sign-in">Sign-In</button>
       </form>
 
 
@@ -111,7 +117,7 @@
           <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="New Password">
         </div>
 
-        <button type="submit" class="btn btn-default auth-form-element" id="change-password">Sign-Up</button>
+        <button type="submit" class="btn btn-default auth-form-element auth-btn" id="change-password">Sign-Up</button>
       </form>
 
       <img class="landing-img-placeholder" src="http://i.imgur.com/yo0dgKc.png"/>
@@ -121,34 +127,28 @@
       <!-- Below Header Photo}}-->
     <div class="bs-example">
       <ul class="nav nav-tabs">
-          <li class="active"><a data-toggle="tab" href="#sectionA">Search Results</a></li>
-          <li><a data-toggle="tab" href="#sectionB" class="activate-user-events-display">Your Events</a></li>
-          <li><a data-toggle="tab" href="#sectionC">Friends</a></li>
-          <li><a data-toggle="tab" href="#sectionD">Find New Friends</a></li>
+          <li id='search-results-tab' class="tab-button active"><a data-toggle="tab" href="#sectionA">Search Results</a></li>
+          <li class='tab-button'><a data-toggle="tab" href="#sectionB" class="activate-user-events-display">Your Events</a></li>
+          <li class='tab-button'><a data-toggle="tab" href="#sectionC">Friends</a></li>
+          <li class='tab-button'><a data-toggle="tab" href="#sectionD" class="find-new-friends-tab">Find New Friends</a></li>
       </ul>
-      <div class="tab-content" id="main-content">
-          <div id="sectionA" class="tab-pane fade in active">
-            <h3> Search Results: </h3>
-
+      <div class="tab-content" id="content-div">
+        <div id="sectionA" class="tab-pane fade in active">
+          <div id="main-content">
           </div>
-          <div id="sectionB" class="tab-pane fade user-events-div">
-              <h3>Events You're Attending</h3>
-              <p>Vestibulum nec erat eu nulla rhoncus fringilla ut non neque. Vivamus nibh urna, ornare id gravida ut, mollis a magna. Aliquam porttitor condimentum nisi, eu viverra ipsum porta ut. Nam hendrerit bibendum turpis, sed molestie mi fermentum id. Aenean volutpat velit sem. Sed consequat ante in rutrum convallis. Nunc facilisis leo at faucibus adipiscing.</p>
-          </div>
-          <div id="sectionC" class="tab-pane fade">
-              <h3>Dropdown 1</h3>
-              <p>WInteger convallis, nulla in sollicitudin placerat, ligula enim auctor lectus, in mollis diam dolor at lorem. Sed bibendum nibh sit amet dictum feugiat. Vivamus arcu sem, cursus a feugiat ut, iaculis at erat. Donec vehicula at ligula vitae venenatis. Sed nunc nulla, vehicula non porttitor in, pharetra et dolor. Fusce nec velit velit. Pellentesque consectetur eros.</p>
-          </div>
-          <div id="sectionD" class="tab-pane fade">
-              <h3>Dropdown 2</h3>
-              <p>Donec vel placerat quam, ut euismod risus. Sed a mi suscipit, elementum sem a, hendrerit velit. Donec at erat magna. Sed dignissim orci nec eleifend egestas. Donec eget mi consequat massa vestibulum laoreet. Mauris et ultrices nulla, malesuada volutpat ante. Fusce ut orci lorem. Donec molestie libero in tempus imperdiet. Cum sociis natoque penatibus et magnis.</p>
-          </div>
+        </div>
+        <div id="sectionB" class="tab-pane fade user-events-div">
+        </div>
+        <div id="sectionC" class="tab-pane fade">
+        </div>
+        <div id="sectionD" class="tab-pane fade find-new-friends-div">
+        </div>
       </div>
-  </div>
-
-    <div id=>
-
-
+    <div>
     </div>
+
+
+  <footer class='footer'><i class="fa fa-github fa-lg" aria-hidden="true"></i></footer>
+
   </body>
 </html>

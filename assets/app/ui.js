@@ -1,37 +1,49 @@
 'use strict';
 
 const app = require('../app-data.js');
-const authApi = require('../auth/api.js');
-const authUi = require('../auth/ui.js')
 const appApi = require('./api.js');
 const loadSearchResults = require('../template/search-results.handlebars');
+const findEventById = require('../../lib/pull-event-from-array-by-id.js');
+const displayUserEvents = require('../template/user-events.handlebars');
+const displayAllUsers = require('../template/display-all-users.handlebars');
 
 const eventfulSearchSuccess = (data) => {
   console.log(data);
   app.eventfulSearchResults = data.eventful_event;
-  // app.eventfulSearchResults.forEach( function(concert, index, array){
-  //   console.log($.parseHTML(concert.description));
-  //
-  // });
-  console.log(app.eventfulSearchResults);
-  $('#main-content').append(loadSearchResults({
+  app.eventfulSearchResults.forEach( function(concert, index, array){
+    let converted = concert.description.replace(/"/g,"");
+    converted = converted.replace(/<\/?[^>]+(>|$)/g, "");
+    converted = converted.replace(/&#39;/g, '');
+    if(converted === 'none'){
+      converted = '';
+    }
+    app.eventfulSearchResults[index].description = converted;
+
+  });
+
+  $('#main-content').html(loadSearchResults({
     events: app.eventfulSearchResults
   }));
+  // $('a[href="' + '#sectionA' + '"]').trigger('click');
+
+
+
   $('.add-event-btn').on('click', function (event){
     event.preventDefault();
-    console.log('clicked');
-    let clickedEventID = this.dataset.eventid;
-    console.log(clickedEventID);
-    let match;
-    app.eventfulSearchResults.forEach(function (concert) {
-        if(concert.id === clickedEventID) {
-          match = concert;
-        }
-      });
-    console.log(match);
-    appApi.addEvent(addEventSuccess, addEventFailure, match);
+    let eventToAdd = findEventById(app.eventfulSearchResults, this.dataset.eventid);
+    appApi.addEvent(addEventSuccess, addEventFailure, eventToAdd);
   });
+
+  $('.remove-event-btn').on('click', function(event){
+    event.preventDefault();
+    let eventToRemove = findEventById(app.user.events, this.dataset.eventid);
+    appApi.removeEvent(deleteEventSuccess, deleteEventFailure, eventToRemove._id);
+  });
+  $('html, body').animate({
+    scrollTop: $("#content-div").offset().top
+}, 1000);
 };
+
 
 const eventfulSearchFailure = (data) => {
   console.log(data);
@@ -40,10 +52,102 @@ const eventfulSearchFailure = (data) => {
 
 const addEventSuccess = (data) => {
   console.log(data, 'success event added');
+  appApi.getOneUser(getOneUserSuccess, getOneUserFailure, app.user._id);
 };
 
 const addEventFailure = (data) => {
-  console.log(data, 'failure event not added')
+  console.log(data, 'failure event not added');
+};
+
+const deleteEventSuccess = (data) => {
+  console.log(data, 'success event deleted');
+  appApi.getOneUser(getOneUserSuccess, getOneUserFailure, app.user._id);
+};
+
+const deleteEventFailure = (data) => {
+  console.log('failure event not deleted');
+  console.log(data);
+};
+
+const getOneUserSuccess = (data) => {
+  console.log('get one user success');
+  console.log(data.user, app.user);
+  let token = app.user.token;
+  app.user = data.user;
+  app.user.token = token;
+  $('.user-events-div').html('');
+  $('.user-events-div').append(displayUserEvents({
+    events: app.user.events
+  }));
+
+  $('.remove-event-btn').on('click', function(event){
+    event.preventDefault();
+    let eventToRemove = findEventById(app.user.events, this.dataset.eventid);
+    appApi.removeEvent(deleteEventSuccess, deleteEventFailure, eventToRemove._id);
+  });
+
+};
+
+const getOneUserFailure = (data) => {
+  console.log('get one user fail');
+  console.log(data);
+};
+
+const getAllUsersSuccess = (data) => {
+  console.log('got all userss');
+  app.allUsers = data.users;
+  for(let i = 0; i< app.allUsers.length; i++){
+    for(let j = 0; j <app.user.followee.length; j++){
+      if(app.user.followee[j].followee_id === app.allUsers[i]._id){
+        app.allUsers[i].followed = true;
+        console.log('true', app.allUsers[i]);
+      }
+    }
+  }
+
+  $('.find-new-friends-div').html('');
+  $('.find-new-friends-div').append(displayAllUsers({
+    users: app.allUsers
+  }));
+  $('.add-followee-btn').on('click', function(event){
+    event.preventDefault();
+    console.log(this.dataset.eventid);
+    appApi.addFollowee(addFolloweeSuccess,
+                       addFolloweeFailure,
+                       this.dataset.eventid);
+  });
+
+  $('.remove-followee-btn').on('click', function(event){
+    event.preventDefault();
+    console.log(this.dataset.eventid);
+    appApi.removeFollowee(removeFolloweeSuccess,
+                          removeFolloweeFailure,
+                          this.dataset.eventid);
+  });
+};
+
+const getAllUsersFailure = (data) => {
+  console.log('got all users failed', data);
+};
+
+const addFolloweeSuccess = (data) => {
+  console.log(data, 'add followee successful');
+  appApi.getOneUser(getOneUserSuccess, getOneUserFailure, app.user._id);
+  appApi.getAllUsers(getAllUsersSuccess, getAllUsersFailure);
+};
+
+const addFolloweeFailure = (data) => {
+  console.log(data, 'add followee failed');
+};
+
+const removeFolloweeSuccess = (data) => {
+  console.log(data, 'remove followee successful');
+  appApi.getOneUser(getOneUserSuccess, getOneUserFailure, app.user._id);
+  appApi.getAllUsers(getAllUsersSuccess, getAllUsersFailure);
+};
+
+const removeFolloweeFailure = (data) => {
+  console.log(data, 'remove followee failed');
 };
 
 
@@ -52,4 +156,14 @@ module.exports = {
   eventfulSearchFailure,
   addEventSuccess,
   addEventFailure,
+  getOneUserSuccess,
+  getOneUserFailure,
+  deleteEventSuccess,
+  deleteEventFailure,
+  getAllUsersSuccess,
+  getAllUsersFailure,
+  addFolloweeSuccess,
+  addFolloweeFailure,
+  removeFolloweeSuccess,
+  removeFolloweeFailure,
 };

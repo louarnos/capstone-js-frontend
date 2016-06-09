@@ -4,7 +4,7 @@
   <div class="media">
     <div class="media-left">
       <a href="">
-        <img class="" src={{this.image_url}} onError="this.src='http://i.imgur.com/r7UiMQr.png';">
+        <img class="event-img" src={{this.image_url}} onError="this.src='http://i.imgur.com/r7UiMQr.png';">
       </a>
     </div>
     <div class="media-body">
@@ -16,7 +16,7 @@
         <br>
       </p>
     </div>
-    {{!-- {{this.description}} --}}
+    {{this.description}}
   </div>
   <button type="button" class="btn btn-default add-event-btn" data-eventId="{{this.id}}">Save this Event</button>
 </div>

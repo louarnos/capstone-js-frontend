@@ -23,7 +23,69 @@ const addEvent = (success, failure, data) => {
   }).done(success).fail(failure);
 };
 
+const removeEvent = (success, failure, id) => {
+  console.log('delete event queued');
+  $.ajax({
+    method : 'DELETE',
+      url : app.api + '/events/' + id,
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  }).done(success).fail(failure);
+};
+
+const getOneUser = (success, failure, id) => {
+  $.ajax({
+    method : 'GET',
+      url : app.api + '/users/' + id,
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  }).done(success).fail(failure);
+};
+
+const getAllUsers = (success, failure) => {
+  $.ajax({
+    method : 'GET',
+      url : app.api + '/users',
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  }).done(success).fail(failure);
+};
+
+const addFollowee = (success, failure, data) => {
+  $.ajax({
+    method : 'PUT',
+      url : app.api + '/add-followee',
+      data : {
+        followee_id: data
+      },
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  }).done(success).fail(failure);
+};
+
+const removeFollowee = (success, failure, data) => {
+  $.ajax({
+    method : 'PUT',
+      url : app.api + '/remove-followee',
+      data : {
+        followee_id: data
+      },
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  }).done(success).fail(failure);
+};
+
 module.exports = {
   eventfulSearch,
   addEvent,
+  removeEvent,
+  getOneUser,
+  getAllUsers,
+  addFollowee,
+  removeFollowee,
 };

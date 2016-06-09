@@ -9,19 +9,85 @@ $blu: #5E9CA0;
 $lite-blu: #73AFB6;
 $drk-brwn: #2B2301;
 $normal-black: #000;
-$form-background: rgba(255, 255, 255, .5);
+$form-background: rgba(51, 51, 51, .5);
 $font-base: 2em;
+$charcoal: #333;
 
 body {
   font-family: Lato;
 }
 
-.hidden{
+
+.nav-btn {
+  padding-right: 5%;
+  padding-left: 2%;
+  margin-top: 8%;
+  font-weight: bolder;
+  font-size: $font-base/2;
+  color: $charcoal
+}
+
+.nav-tabs > li > a,
+.nav-tabs > li > a,
+.nav-tabs > li > a {
+  color: $blu !important;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background-color: $charcoal !important;
+}
+
+.nav-btn:hover {
+  color: $blu !important;
+}
+
+.nav-btn  {
+  color: $lite-blu !important;
+}
+
+.user-img {
+    height: auto;
+    width: auto;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.add-followee-btn {
+  color: $lite-blu !important;
+  background-color: $charcoal;
+  border-color: $charcoal;
+}
+
+.event-img {
+  height: 65px;
+  width: 65px;
+}
+
+.user-row {
+  width: 65%;
+}
+
+.remove-followee-btn {
+  color: $charcoal !important;
+  background-color: $lite-blu;
+  border-color: $lite-blu;
+}
+
+.hidden {
   display: none;
 }
 
 .landing-img-placeholder {
   visibility: hidden;
+}
+
+footer {
+  height: 250px;
+  background-color: $charcoal;
+  border: 1px none;
+  border-radius: 5px;
 }
 
 .navbar-default {
@@ -30,6 +96,7 @@ body {
   border-right: 0;
   border-radius: 0;
   border-bottom: 5px $blu solid;
+  border-top: 5px $blu solid;
  }
 
 .landing {
@@ -45,12 +112,32 @@ body {
   // height: auto;
   position: relative;
   // width: auto;
+  margin-top: 5%;
 }
 
 .landing-img {
   height: auto;
   width: auto;
 }
+
+.fa-github {
+  color: $blu;
+  font-size: $font-base*5;
+  text-align: center;
+  left: 50%;
+  position: relative;;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// .footer-content{
+//   text-align: center;
+//   left: 50%;
+//   position: relative;;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   color: $blu;
+// }
 
 .logo-div {
   padding-bottom: 2%;
@@ -75,6 +162,7 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 45%;
+  padding-bottom: 3%;
 }
 
 .auth-form-container .auth-form-element {
@@ -83,10 +171,18 @@ body {
   top: 50%;
   transform: translate(-50%, -50%);
   width: 60%;
+  color: $yell;
+  margin-bottom: 2.5%;
+}
+
+.bs-example {
+  margin-top: 10%;
 }
 
 .auth-form-container .auth-form-element .btn {
   width: 20%;
+  margin-bottom: 10%;
+  margin-top: 5%;
 }
 
 .btn-primary {
@@ -112,10 +208,12 @@ body {
   padding-top: 5%;
   left: 50%;
   font-size: 1.5em;
+  font-weight: bolder;
+  color: $yell;
 }
 
 .auth-form {
-  color: $normal-black;
+  color: $blu;
   // text-shadow: -.2px 0 $blu, 0 .2px $blu, .2px 0 $blu, 0 -.2px $blu;
   width: 45%;
 }

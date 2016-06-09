@@ -1,6 +1,6 @@
 
 {{#each events }}
-<div class='well'>
+<h3>Events You're Attending</h3>
   <div class="media">
     <div class="media-left">
       <a href="">
@@ -14,10 +14,9 @@
         {{this.venue_address}}
         {{this.city_name}}, {{this.region_name}}, {{this.country_name}}
         <br>
+        {{this.description}}
+        <button type="button" class="btn btn-default remove-event-btn pull-right" data-eventId="{{this.id}}">Remove This Event</button>
       </p>
     </div>
-    {{!-- {{this.description}} --}}
-  </div>
-  <button type="button" class="btn btn-default add-event-btn" data-eventId="{{this.id}}">Remove This Event</button>
-</div>
+
 {{/each}}

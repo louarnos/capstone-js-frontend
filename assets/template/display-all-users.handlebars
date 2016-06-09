@@ -1,0 +1,18 @@
+{{#each users}}
+  <div class="row user-row">
+    <div class="col-xs-6 col-md-3">
+      <a href="#" class="thumbnail">
+        <img class="user-img"src="https://www.2025ad.com/typo3conf/ext/providerconti/Resources/Public/src/Images/profil-pic_dummy.png" alt="...">
+      </a>
+    </div>
+    <div class='well'>
+      <h3>{{this.username}}<h3>
+        <p>{{this.email}}</p>
+        {{#if this.followed}}
+          <button type="button" class="btn btn-default remove-followee-btn" data-eventId="{{this._id}}">Unfollow</button>
+          {{else}}
+          <button type="button" class="btn btn-default add-followee-btn" data-eventId="{{this._id}}">Follow</button>
+        {{/if}}
+    </div>
+  </div>
+{{/each}}

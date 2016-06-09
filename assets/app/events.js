@@ -4,9 +4,7 @@ const app = require('../app-data.js');
 const appApi = require('./api.js');
 const appUi = require('./ui.js');
 const displayUserEvents = require('../template/user-events.handlebars');
-
-// const authApi = require('../api.js');
-// const authUi = require('../ui.js');
+const findEventById = require('../../lib/pull-event-from-array-by-id.js');
 
 const addHandlers = () => {
   // NAV EVENTS
@@ -14,19 +12,19 @@ const addHandlers = () => {
     $('#sign-up-form').removeClass('hidden');
     $('#sign-in-form').addClass('hidden');
     $('#change-password-form').addClass('hidden');
-    $('.logo').addClass('hidden');
+    $('#eventful-search-form').addClass('hidden');
   });
   $('#nav-sign-in').on('click', function(){
     $('#sign-in-form').removeClass('hidden');
     $('#sign-up-form').addClass('hidden');
     $('#change-password-form').addClass('hidden');
-    $('.logo').addClass('hidden');
+    $('#eventful-search-form').addClass('hidden');
   });
   $('#nav-change-password').on('click', function(){
     $('#change-password-form').removeClass('hidden');
     $('#sign-up-form').addClass('hidden');
     $('#sign-in-form').addClass('hidden');
-    $('.logo').addClass('hidden');
+    $('#eventful-search-form').addClass('hidden');
   });
 
   // EVENT SEARCH EVENTS
@@ -42,10 +40,27 @@ const addHandlers = () => {
   // SHOW USER EVENTS HANDLER
   $('.activate-user-events-display').on('click', function(event){
     event.preventDefault();
-    $('.user-events-div').html('')
+    $('.user-events-div').html('');
     $('.user-events-div').append(displayUserEvents({
       events: app.user.events
     }));
+
+    $('.remove-event-btn').on('click', function(event){
+      event.preventDefault();
+      let eventToRemove = findEventById(app.user.events,
+                                        this.dataset.eventid);
+      appApi.removeEvent(appUi.deleteEventSuccess,
+                         appUi.deleteEventFailure,
+                         eventToRemove._id);
+    });
+  });
+
+
+  // Find New Friends Tab
+
+  $('.find-new-friends-tab').on('click', function(event){
+    event.preventDefault();
+    appApi.getAllUsers(appUi.getAllUsersSuccess, appUi.getAllUsersFailure);
   });
 };
 
