@@ -6,6 +6,7 @@ const appUi = require('./ui.js');
 const displayUserEvents = require('../template/user-events.handlebars');
 const findEventById = require('../../lib/pull-event-from-array-by-id.js');
 
+
 const addHandlers = () => {
   // NAV EVENTS
   $('#nav-sign-up').on('click', function(){
@@ -55,6 +56,30 @@ const addHandlers = () => {
     });
   });
 
+  $('.show-user-followees').on('click', function(event){
+    event.preventDefault();
+    $('.user-followees-div').html('');
+    app.user.followee.forEach(function(followee){
+      appApi.getOneUser(appUi.getFolloweeSuccess,
+                        appUi.getFolloweeFailure,
+                        followee.followee_id);
+      });
+    });
+  };
+
+  $(document).on('click','.unfollow-btn',function(){
+    console.log('clicked unfollow');
+    appApi.removeFollowee(appUi.removeFolloweeSuccessTwo,
+                          appUi.removeFolloweeFailure,
+                          this.dataset.eventid);
+    $('.user-followees-div').html('');
+    appApi.getOneUser(appUi.getOneUserSuccess, appUi.getOneUserFailure, app.user._id);
+    app.user.followee.forEach(function(followee){
+      appApi.getOneUser(appUi.getFolloweeSuccess,
+                        appUi.getFolloweeFailure,
+                        followee.followee_id);
+  });
+});
 
   // Find New Friends Tab
 
@@ -62,7 +87,6 @@ const addHandlers = () => {
     event.preventDefault();
     appApi.getAllUsers(appUi.getAllUsersSuccess, appUi.getAllUsersFailure);
   });
-};
 
 module.exports = {
   addHandlers,

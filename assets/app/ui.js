@@ -6,6 +6,12 @@ const loadSearchResults = require('../template/search-results.handlebars');
 const findEventById = require('../../lib/pull-event-from-array-by-id.js');
 const displayUserEvents = require('../template/user-events.handlebars');
 const displayAllUsers = require('../template/display-all-users.handlebars');
+const displayUserFollowees = require('../template/display-user-followees.handlebars');
+
+const getOneUserFailure = (data) => {
+  console.log('get one user fail');
+  console.log(data);
+};
 
 const eventfulSearchSuccess = (data) => {
   console.log(data);
@@ -24,7 +30,8 @@ const eventfulSearchSuccess = (data) => {
   $('#main-content').html(loadSearchResults({
     events: app.eventfulSearchResults
   }));
-  // $('a[href="' + '#sectionA' + '"]').trigger('click');
+
+  $('a[href="' + '#sectionA' + '"]').trigger('click');
 
 
 
@@ -85,13 +92,9 @@ const getOneUserSuccess = (data) => {
     let eventToRemove = findEventById(app.user.events, this.dataset.eventid);
     appApi.removeEvent(deleteEventSuccess, deleteEventFailure, eventToRemove._id);
   });
-
 };
 
-const getOneUserFailure = (data) => {
-  console.log('get one user fail');
-  console.log(data);
-};
+
 
 const getAllUsersSuccess = (data) => {
   console.log('got all userss');
@@ -109,6 +112,7 @@ const getAllUsersSuccess = (data) => {
   $('.find-new-friends-div').append(displayAllUsers({
     users: app.allUsers
   }));
+
   $('.add-followee-btn').on('click', function(event){
     event.preventDefault();
     console.log(this.dataset.eventid);
@@ -150,6 +154,24 @@ const removeFolloweeFailure = (data) => {
   console.log(data, 'remove followee failed');
 };
 
+const getFolloweeSuccess = (data) => {
+  console.log('got one followee', data);
+  $('.user-followees-div').append(displayUserFollowees({
+    followee: data.user
+  }));
+};
+
+
+
+const getFolloweeFailure = (data) => {
+  console.log('get one followee failure', data);
+};
+
+const removeFolloweeSuccessTwo = (data) => {
+  console.log('success followee removed')
+};
+
+
 
 module.exports = {
   eventfulSearchSuccess,
@@ -166,4 +188,7 @@ module.exports = {
   addFolloweeFailure,
   removeFolloweeSuccess,
   removeFolloweeFailure,
+  getFolloweeSuccess,
+  getFolloweeFailure,
+  removeFolloweeSuccessTwo,
 };
