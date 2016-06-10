@@ -54,6 +54,24 @@ body {
   background-color: $charcoal !important;
 }
 
+.tab-button {
+  border: 2px $blu solid;
+  border-radius: 5%;
+}
+
+#content-div {
+  background-color: $charcoal;
+  width: 100%;
+  border: 2px $blu solid;
+  border-radius: .2%;
+}
+
+.tab-pane, .user-row {
+  width: 85%;
+  margin: auto;
+  padding-top: 5%;
+}
+
 .nav-btn:hover {
   color: $blu !important;
 }
@@ -67,13 +85,14 @@ body {
     width: auto;
     max-width: 80px;
     max-height: 80px;
+    padding-top: 5%;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    border: 2px $charcoal solid;
 }
 
-.add-followee-btn {
-  color: $lite-blu !important;
-  background-color: $charcoal;
-  border-color: $charcoal;
-}
+
 
 .event-img {
   height: 65px;
@@ -88,6 +107,28 @@ body {
   color: $charcoal !important;
   background-color: $lite-blu;
   border-color: $lite-blu;
+  margin-bottom: 2%;
+}
+
+.remove-event-button {
+  color: $charcoal !important;
+  background-color: $lite-blu;
+  border-color: $lite-blu;
+  margin-bottom: 2%;
+}
+
+.add-followee-btn {
+  color: $lite-blu !important;
+  background-color: $charcoal;
+  border-color: $charcoal;
+  margin-top: 2%;
+}
+
+.add-event-button {
+  color: $lite-blu !important;
+  background-color: $charcoal;
+  border-color: $charcoal;
+  margin-top: 2%;
 }
 
 .hidden {
@@ -103,7 +144,6 @@ footer {
   background-color: $charcoal;
   border: 1px none;
   border-radius: 5px;
-  margin-top: 10%;
 }
 
 .navbar-default {

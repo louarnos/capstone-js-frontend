@@ -46,6 +46,7 @@ const eventfulSearchSuccess = (data) => {
 
   $('.add-event-btn').on('click', function (event){
     event.preventDefault();
+    $(this).hide()
     let eventToAdd = findEventById(app.eventfulSearchResults, this.dataset.eventid);
     appApi.addEvent(addEventSuccess, addEventFailure, eventToAdd);
   });
