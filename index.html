@@ -13,10 +13,10 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navigation">
-          <ul class="nav navbar-nav">
-            <li class='nav-tab'><a data-toggle="tab" href="#sectionB" class="activate-user-events-display">Your Events</a></li>
-            <li class='nav-tab'><a data-toggle="tab" href="#sectionC">Friends</a></li>
-            <li class='nav-tab'><a data-toggle="tab" href="#sectionD" class="find-new-friends-tab">Find New Friends</a></li>
+          <ul class="nav navbar-nav hidden" id="user-nav">
+            <li id="nav-user-events" class='nav-tab'><a data-toggle="tab" href="#sectionB" class="activate-user-events-display">Your Events</a></li>
+            <li id="nav-user-friends" class='nav-tab'><a data-toggle="tab" href="#sectionC">Friends</a></li>
+            <li id="nav-find-all-users" class='nav-tab'><a data-toggle="tab" href="#sectionD" class="find-new-friends-tab">Find New Friends</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id='nav-change-password' class="nav-tab hidden"><a data-toggle="tab">Change Password</a></li>
@@ -42,6 +42,7 @@
           <div class="auth-form-element form-group">
             <input type="text" class="input-group form-control" name="location" id="formGroupExampleInput" placeholder="Enter Location">
           </div>
+            <p class="pluse text-pulse hidden auth-form-element" id="pulse">Searching...</p>
           <button type="submit" class="btn btn-primary auth-form-element auth-btn" >
             Search
           </button>
@@ -74,7 +75,7 @@
           <label class="">Password Confirmation</label>
           <input type="password" class="form-control" name="credentials[password_confirmation]" id="formGroupExampleInput" placeholder="Confirm Password">
         </div>
-
+        <p class="pluse text-pulse hidden auth-form-element" id="sign-up-fail-notification">Something went wrong, try again...</p>
         <button type="submit" class="btn btn-default auth-form-element auth-btn" id="sign-up">Sign-Up</button>
       </form>
 
@@ -93,7 +94,7 @@
           <label class="">Password</label>
           <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="Password">
         </div>
-
+        <p class="pluse text-pulse hidden auth-form-element" id="sign-in-fail-notification">Something went wrong, try again...</p>
         <button type="submit" class="btn btn-default auth-form-element auth-btn" id="sign-in">Sign-In</button>
       </form>
 
@@ -109,23 +110,26 @@
 
         <div class="auth-form-element">
           <label class="">Password</label>
-          <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="Old Password">
+          <input type="password" class="form-control" name="passwords[old]"id="formGroupExampleInput" placeholder="Old Password">
         </div>
 
         <div class="auth-form-element">
           <label class="">Password</label>
-          <input type="password" class="form-control" name="credentials[password]"id="formGroupExampleInput" placeholder="New Password">
+          <input type="password" class="form-control" name="passwords[new]"id="formGroupExampleInput" placeholder="New Password">
         </div>
-
+        <p class="pluse text-pulse hidden auth-form-element" id="pw-change-fail-notification">Something went wrong, try again...</p>
         <button type="submit" class="btn btn-default auth-form-element auth-btn" id="change-password">Sign-Up</button>
       </form>
+
 
       <img class="landing-img-placeholder" src="http://i.imgur.com/yo0dgKc.png"/>
     </div>
 
 
+
+
       <!-- Below Header Photo}}-->
-    <div class="bs-example">
+    <div class="bs-example hidden">
       <ul class="nav nav-tabs">
           <li id='search-results-tab' class="tab-button active"><a data-toggle="tab" href="#sectionA">Search Results</a></li>
           <li class='tab-button'><a data-toggle="tab" href="#sectionB" class="activate-user-events-display">Your Events</a></li>
@@ -135,20 +139,22 @@
       <div class="tab-content" id="content-div">
         <div id="sectionA" class="tab-pane fade in active">
           <div id="main-content">
+            <h3>Search Results:</h3>
           </div>
         </div>
         <div id="sectionB" class="tab-pane fade user-events-div">
+          <h3>Events You're Attending:</h3>
         </div>
         <div id="sectionC" class="tab-pane fade user-followees-div">
+          <h3>Your Friends:</h3>
         </div>
         <div id="sectionD" class="tab-pane fade find-new-friends-div">
+            <h3>Other Users:</h3>
         </div>
       </div>
-    <div>
     </div>
 
-
-  <footer class='footer'><i class="fa fa-github fa-lg" aria-hidden="true"></i></footer>
+  <footer class='footer'><a href="https://github.com/louarnos" target="_blank"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a></footer>
 
   </body>
 </html>

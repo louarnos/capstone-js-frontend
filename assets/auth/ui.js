@@ -2,7 +2,7 @@
 
 const app = require('../app-data.js');
 const authApi = require('./api.js');
-const authUi = require('./ui.js')
+const authUi = require('./ui.js');
 
 const signOutSuccess = (data) => {
   console.log('signed-out', data);
@@ -11,6 +11,19 @@ const signOutSuccess = (data) => {
   $('#nav-sign-out').addClass('hidden');
   $('#nav-change-password').addClass('hidden');
   $('#eventful-search-form').addClass('hidden');
+  $('#user-nav').addClass('hidden');
+  $('#sign-in-form').each(function(){
+    this.reset();
+  });
+  $('#sign-up-form').each(function(){
+    this.reset();
+  });
+  $('#eventful-search-form').each(function(){
+    this.reset();
+  });
+  $('#change-password-form').each(function(){
+    this.reset();
+  });
 };
 
 const signInSuccess = (data) => {
@@ -23,13 +36,26 @@ const signInSuccess = (data) => {
   $('#nav-sign-in').addClass('hidden');
   $('#nav-sign-out').removeClass('hidden');
   $('#nav-change-password').removeClass('hidden');
+  $('#user-nav').removeClass('hidden');
+  $('#sign-in-form').each(function(){
+    this.reset();
+  });
 };
 
 const changePWSuccess = (data) => {
-
+  console.log(data);
+  $('#change-password-form').each(function(){
+    this.reset();
+  });
 };
 
 const changePWFail = (error) => {
+  console.log(error);
+  $('#pw-change-fail-notification').removeClass('hidden');
+
+  setTimeout(function(){
+    $('#pw-change-fail-notification').addClass('hidden');
+  }, 2000);
 
 };
 
@@ -43,6 +69,9 @@ const regSuccess = (data) => {
   $('#nav-sign-in').addClass('hidden');
   $('#nav-sign-out').removeClass('hidden');
   $('#nav-change-password').removeClass('hidden');
+  $('#sign-up-form').each(function(){
+    this.reset();
+  });
 };
 
 
@@ -50,10 +79,20 @@ const regSuccess = (data) => {
 const signInFail = (error) => {
   console.log(Error);
   console.log('sign-in-failed');
+  $('#sign-in-fail-notification').removeClass('hidden');
+
+  setTimeout(function(){
+    $('#sign-in-fail-notification').addClass('hidden');
+  }, 2000);
 };
 
 const regFailure = (error) => {
   console.log(error);
+  $('#sign-up-fail-notification').removeClass('hidden');
+
+  setTimeout(function(){
+    $('#sign-up-fail-notification').addClass('hidden');
+  }, 2000);
 };
 
 const failure = (error) => {

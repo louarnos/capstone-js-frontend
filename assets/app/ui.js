@@ -7,7 +7,7 @@ const findEventById = require('../../lib/pull-event-from-array-by-id.js');
 const displayUserEvents = require('../template/user-events.handlebars');
 const displayAllUsers = require('../template/display-all-users.handlebars');
 const displayUserFollowees = require('../template/display-user-followees.handlebars');
-
+const moment = require('moment');
 
 const getOneUserFailure = (data) => {
   console.log('get one user fail');
@@ -17,6 +17,8 @@ const getOneUserFailure = (data) => {
 
 const eventfulSearchSuccess = (data) => {
   console.log(data);
+  $('.bs-example').removeClass('hidden');
+  $('#pulse').addClass('hidden');
   app.eventfulSearchResults = data.eventful_event;
   app.eventfulSearchResults.forEach( function(concert, index, array){
     let converted = concert.description.replace(/"/g,"");
@@ -27,6 +29,12 @@ const eventfulSearchSuccess = (data) => {
     }
     app.eventfulSearchResults[index].description = converted;
   });
+
+  app.eventfulSearchResults.forEach( function(concert, index){
+    let convertedDate = moment(concert.start_time);
+    convertedDate = convertedDate._d.toString().substring(0,21);
+    app.eventfulSearchResults[index].start_time = convertedDate;
+  })
 
   $('#main-content').html(loadSearchResults({
     events: app.eventfulSearchResults

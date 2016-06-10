@@ -3,12 +3,18 @@
   <div class="row user-row">
     <div class="col-xs-6 col-md-3">
       <a href="#" class="thumbnail">
-        <img class="user-img"src="https://www.2025ad.com/typo3conf/ext/providerconti/Resources/Public/src/Images/profil-pic_dummy.png" alt="...">
+        <img class="user-img"src="https://www.salesarchitects.com/wp-content/uploads/2014/12/silly-business-person.jpg" alt="...">
       </a>
     </div>
     <div class='well'>
       <h3>{{followee.username}}<h3>
-        <p>{{followee.email}}</p>
+        <p>
+          {{followee.email}}<br>
+          {{#each followee.events}}
+            {{this.title}},
+          {{/each}}
+        </p>
+
         <button type="button" class="btn btn-default unfollow-btn" data-eventId="{{followee._id}}">Unfollow</button>
     </div>
   </div>

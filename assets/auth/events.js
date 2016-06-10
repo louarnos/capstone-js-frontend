@@ -23,9 +23,10 @@ const addHandlers = () => {
     event.preventDefault();
     authApi.signOut(authUi.signOutSuccess, authUi.failure);
   });
-  $('#change-pw').on('submit', function(event) {
+  $('#change-password-form').on('submit', function(event) {
     event.preventDefault();
     let data = getFormFields(this);
+    console.log(data);
     authApi.changePW(authUi.changePWSuccess, authUi.changePWFail, data);
   });
 };
