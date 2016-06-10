@@ -113,6 +113,8 @@ const getAllUsersSuccess = (data) => {
   $('.add-followee-btn').on('click', function(event){
     event.preventDefault();
     console.log(this.dataset.eventid);
+    console.log($(this).parent().children('.remove-followee-btn'));
+
     appApi.addFollowee(addFolloweeSuccess,
                        addFolloweeFailure,
                        this.dataset.eventid);
