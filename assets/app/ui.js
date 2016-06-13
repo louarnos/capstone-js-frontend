@@ -179,6 +179,22 @@ const removeFolloweeSuccessTwo = (data) => {
                     });
 };
 
+const editBioSuccess = (data) => {
+  console.log(data);
+};
+
+const editBioFailure = (data) => {
+  console.log(data);
+};
+
+const addImgSuccess = (data) => {
+  console.log(data);
+};
+
+const addImgFailure = (data) => {
+  console.log(data);
+};
+
 
 
 module.exports = {
@@ -199,4 +215,8 @@ module.exports = {
   getFolloweeSuccess,
   getFolloweeFailure,
   removeFolloweeSuccessTwo,
+  editBioSuccess,
+  editBioFailure,
+  addImgSuccess,
+  addImgFailure,
 };

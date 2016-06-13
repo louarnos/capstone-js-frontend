@@ -134,6 +134,21 @@ const addHandlers = () => {
   });
 };
 
+
+  $('#submit-bio').on('click', function(event){
+    event.preventDefault();
+    console.log('submit bio clicked');
+    let data = $('#bio-input').val();
+    appApi.editBio(appUi.editBioSuccess, appUi.editBioFailure, data);
+  });
+
+  $('#add-image-url').on('click', function(event){
+    event.preventDefault();
+    let data = $('#img-url').val();
+    console.log(data);
+    appApi.addImg(appUi.addImgSuccess, appUi.addImgFailure, data);
+  })
+
 module.exports = {
   addHandlers,
 };

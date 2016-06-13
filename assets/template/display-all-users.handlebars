@@ -1,13 +1,14 @@
 {{#each users}}
   <div class="row user-row">
     <div class="col-xs-6 col-md-3">
-      <a href="#" class="thumbnail">
-        <img class="user-img"src="https://www.salesarchitects.com/wp-content/uploads/2014/12/silly-business-person.jpg" alt="...">
+      <a href="" class='thumbnail'>
+        <img class="user-img" src='{{this.image_url}}' onError="this.src='https://www.salesarchitects.com/wp-content/uploads/2014/12/silly-business-person.jpg';">
       </a>
     </div>
     <div class='well'>
       <h3 class="username">{{this.username}}<h3>
         <h4 class="email">{{this.email}}</h4><br>
+        {{this.bio}}
         <p class="userevents">
           {{#each this.events}}
             {{this.title}} at {{this.venue}} on {{this.start_time}}<br>

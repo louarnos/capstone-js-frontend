@@ -80,6 +80,32 @@ const removeFollowee = (success, failure, data) => {
   }).done(success).fail(failure);
 };
 
+const editBio = (success, failure, data) => {
+  $.ajax({
+    method : 'PATCH',
+      url : app.api + '/user-bio',
+      data : {
+        bio: data
+      },
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  }).done(success).fail(failure);
+};
+
+const addImg = (success, failure, data) => {
+  $.ajax({
+    method : 'PATCH',
+      url : app.api + '/user-img',
+      data : {
+        image_url: data
+      },
+      headers: {
+        Authorization: 'Token token=' + app.user.token,
+      },
+  }).done(success).fail(failure);
+};
+
 module.exports = {
   eventfulSearch,
   addEvent,
@@ -88,4 +114,6 @@ module.exports = {
   getAllUsers,
   addFollowee,
   removeFollowee,
+  editBio,
+  addImg,
 };
