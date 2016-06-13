@@ -13,20 +13,22 @@ const addHandlers = () => {
     $('#sign-in-form').addClass('hidden');
     $('#change-password-form').addClass('hidden');
     $('#eventful-search-form').addClass('hidden');
+    $('#edit-profile-form').addClass('hidden');
   });
   $('#nav-sign-in').on('click', function(){
     $('#sign-in-form').removeClass('hidden');
     $('#sign-up-form').addClass('hidden');
     $('#change-password-form').addClass('hidden');
     $('#eventful-search-form').addClass('hidden');
+    $('#edit-profile-form').addClass('hidden');
   });
   $('#nav-change-password').on('click', function(){
     $('#change-password-form').removeClass('hidden');
     $('#sign-up-form').addClass('hidden');
     $('#sign-in-form').addClass('hidden');
     $('#eventful-search-form').addClass('hidden');
+    $('#edit-profile-form').addClass('hidden');
   });
-
   $("#nav-user-events").on('click', function(){
       $('.bs-example').removeClass('hidden');
       $('html, body').animate({
@@ -49,6 +51,16 @@ const addHandlers = () => {
         scrollTop: $(".bs-example").offset().top
       }, 1000);
       $('.nav-tabs a[href="#sectionD"]').tab('show');
+    });
+
+    $("#nav-edit-user").on('click', function(event){
+      event.preventDefault();
+      $('#sign-up-form').addClass('hidden');
+      $('#sign-in-form').addClass('hidden');
+      $('#eventful-search-form').addClass('hidden');
+      $('#change-password-form').addClass('hidden');
+      $('#change-password-form').addClass('hidden');
+      $('#edit-profile-form').removeClass('hidden');
     });
 
   // EVENT SEARCH EVENTS

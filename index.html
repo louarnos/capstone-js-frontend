@@ -19,6 +19,7 @@
             <li id="nav-find-all-users" class='nav-tab'><a data-toggle="tab" href="#sectionD" class="find-new-friends-tab">Find New Friends</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
+            <li id='nav-edit-user' class="nav-tab hidden"><a data-toggle="tab">Edit Your Profile</a></li>
             <li id='nav-change-password' class="nav-tab hidden"><a data-toggle="tab">Change Password</a></li>
             <li id='nav-sign-out' class="nav-tab hidden"><a data-toggle="tab">Sign Out</a></li>
             <li id='nav-sign-up' class="nav-tab"><a data-toggle="tab">Sign Up</a></li>
@@ -45,6 +46,25 @@
             <p class="pluse text-pulse hidden auth-form-element" id="pulse">Searching...</p>
           <button type="submit" class="btn btn-primary auth-form-element auth-btn" >
             Search
+          </button>
+        </div>
+      </form>
+
+      <form class= "auth-form-container hidden" id="edit-profile-form">
+        <h1 class="auth-form-title auth-form auth-form-element"> Edit Your Profile </h1>
+        <div class ="form-group">
+          <div class="auth-form-element form-group">
+            <input type="text" class="input-group form-control" name="img-url" id="formGroupExampleInput" placeholder="Enter A Image Url">
+          </div>
+          <button type="submit" class="btn btn-primary auth-form-element auth-btn" id='add-image-url' >
+            Add Image
+          </button>
+          <div class="auth-form-element form-group">
+            <textarea class="form-control" id="bio-input" rows="3" placeholder="Enter Your Bio Here"></textarea>
+          </div>
+            <p class="pluse text-pulse hidden auth-form-element" id="pulse">Searching...</p>
+          <button type="submit" class="btn btn-primary auth-form-element auth-btn" >
+            Submit Profile Bio
           </button>
         </div>
       </form>
@@ -124,9 +144,6 @@
 
       <img class="landing-img-placeholder" src="http://i.imgur.com/yo0dgKc.png"/>
     </div>
-
-
-
 
       <!-- Below Header Photo}}-->
     <div class="bs-example hidden">

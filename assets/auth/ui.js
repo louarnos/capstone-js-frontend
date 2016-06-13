@@ -12,6 +12,8 @@ const signOutSuccess = (data) => {
   $('#nav-change-password').addClass('hidden');
   $('#eventful-search-form').addClass('hidden');
   $('#user-nav').addClass('hidden');
+  $('#nav-edit-user').addClass('hidden');
+  $('#edit-profile-form').addClass('hidden');
   $('#sign-in-form').each(function(){
     this.reset();
   });
@@ -37,6 +39,7 @@ const signInSuccess = (data) => {
   $('#nav-sign-out').removeClass('hidden');
   $('#nav-change-password').removeClass('hidden');
   $('#user-nav').removeClass('hidden');
+  $('#nav-edit-user').removeClass('hidden');
   $('#sign-in-form').each(function(){
     this.reset();
   });

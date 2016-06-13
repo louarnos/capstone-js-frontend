@@ -41,6 +41,7 @@ const eventfulSearchSuccess = (data) => {
   }));
 
   $('a[href="' + '#sectionA' + '"]').trigger('click');
+  $('#youtube-player').removeClass('hidden');
 
 
 
