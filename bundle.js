@@ -197,7 +197,7 @@ webpackJsonp([0],[
 	'use strict';
 
 	var app = {
-	  api: 'http://pacific-refuge-81971'
+	  api: 'https://pacific-refuge-81971.herokuapp.com'
 	};
 
 	module.exports = app;
