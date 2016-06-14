@@ -1,22 +1,28 @@
 {{!-- {{#each followee}} --}}
 
-  <div class="row user-row">
-    <div class="col-xs-6 col-md-3">
-      <a href="" class='thumbnail'>
-        <img class="user-img" src='{{followee.image_url}}' onError="this.src='https://www.salesarchitects.com/wp-content/uploads/2014/12/silly-business-person.jpg';">
-      </a>
-    </div>
-    <div class='well'>
-      <h3>{{followee.username}}<h3>
-        <p>
-          {{followee.email}}<br>
-          {{#each followee.events}}
-            {{this.title}},
-          {{/each}}
-        </p>
-
-        <button type="button" class="btn btn-default unfollow-btn" data-eventId="{{followee._id}}">Unfollow</button>
-    </div>
+<div class="row user-row">
+  <div class="col-xs-6 col-md-3">
+    <a href="" class='thumbnail'>
+      <img class="user-img" src='{{followee.image_url}}' onError="this.src='https://www.salesarchitects.com/wp-content/uploads/2014/12/silly-business-person.jpg';">
+    </a>
   </div>
+  <div class='well'>
+    <h3 class="username">{{followee.username}}<h3><br>
+      <h4 class="email">{{followee.bio}}</h4><br>
+
+      <p class="userevents">
+        {{followee.username}} is attending the following events:<br><br>
+        <ul>
+        {{#each followee.events}}
+          <li><b><strong>{{this.title}}</strong></b> <br> <i>{{this.venue_name}}</i> in {{this.city_name}}, {{this.region_name}} {{this.country_name}} <br> {{this.start_time}}</li><br>
+        {{/each}}
+        </ul>
+      </p>
+      <button type="button" class="btn btn-default unfollow-btn" data-eventId="{{followee._id}}">Unfollow</button>
+  </div>
+</div>
+
+
+
 
 {{!-- {{/each}} --}}

@@ -25,6 +25,7 @@ $charcoal: #333;
 .username{
   font-size: $font-base;
   font-weight: bolder;
+  color: $blu;
 }
 
 body {
@@ -106,11 +107,12 @@ body {
   width: 65%;
 }
 
-.remove-followee-btn {
+.remove-followee-btn, .unfollow-btn {
   color: $charcoal !important;
   background-color: $lite-blu;
   border-color: $lite-blu;
   margin-bottom: 2%;
+  margin-top: 2%;
 }
 
 .remove-event-button {
@@ -125,6 +127,7 @@ body {
   background-color: $charcoal;
   border-color: $charcoal;
   margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .add-event-button {

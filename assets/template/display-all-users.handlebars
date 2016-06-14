@@ -6,13 +6,16 @@
       </a>
     </div>
     <div class='well'>
-      <h3 class="username">{{this.username}}<h3>
-        <h4 class="email">{{this.email}}</h4><br>
-        {{this.bio}}
+      <h3 class="username">{{this.username}}<h3><br>
+        <h4 class="email">{{this.bio}}</h4><br>
+
         <p class="userevents">
+          {{this.username}} is attending the following events:<br><br>
+          <ul>
           {{#each this.events}}
-            {{this.title}} at {{this.venue}} on {{this.start_time}}<br>
+            <li><b><strong>{{this.title}}</strong></b> <br> <i>{{this.venue_name}}</i> <br> {{this.start_time}}</li><br>
           {{/each}}
+          </ul>
         </p>
         {{#if this.followed}}
           <button type="button" class="btn btn-default remove-followee-btn" data-eventId="{{this._id}}">Unfollow</button>
