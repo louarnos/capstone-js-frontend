@@ -1,7 +1,7 @@
 'use strict';
 
 const app = {
-  api : 'https://pacific-refuge-81971'
+  api : 'http://pacific-refuge-81971'
 };
 
 
