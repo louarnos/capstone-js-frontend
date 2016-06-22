@@ -181,18 +181,40 @@ const removeFolloweeSuccessTwo = (data) => {
 
 const editBioSuccess = (data) => {
   console.log(data);
+  $('#edit-profile-form').each(function(){
+    this.reset();
+  });
+  $("#edit-profile-success-notification").removeClass('hidden');
+  setTimeout(function(){
+    $("#edit-profile-success-notification").addClass('hidden');
+  }, 2000);
 };
 
 const editBioFailure = (data) => {
   console.log(data);
+  $("#edit-profile-fail-notification").removeClass('hidden');
+  setTimeout(function(){
+    $("#edit-profile-fail-notification").addClass('hidden');
+  }, 2000);
 };
 
 const addImgSuccess = (data) => {
   console.log(data);
+  $('#edit-profile-form').each(function(){
+    this.reset();
+  });
+  $("#edit-profile-success-notification").removeClass('hidden');
+  setTimeout(function(){
+    $("#edit-profile-success-notification").addClass('hidden');
+  }, 2000);
 };
 
 const addImgFailure = (data) => {
   console.log(data);
+  $("#edit-profile-fail-notification").removeClass('hidden');
+  setTimeout(function(){
+    $("#edit-profile-fail-notification").addClass('hidden');
+  }, 2000);
 };
 
 

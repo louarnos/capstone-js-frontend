@@ -14,6 +14,7 @@ const signOutSuccess = (data) => {
   $('#user-nav').addClass('hidden');
   $('#nav-edit-user').addClass('hidden');
   $('#edit-profile-form').addClass('hidden');
+  $('.bs-example').addClass('hidden');
   $('#sign-in-form').each(function(){
     this.reset();
   });
@@ -24,6 +25,9 @@ const signOutSuccess = (data) => {
     this.reset();
   });
   $('#change-password-form').each(function(){
+    this.reset();
+  });
+  $('#edit-profile-form').each(function(){
     this.reset();
   });
 };

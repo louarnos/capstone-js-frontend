@@ -17,6 +17,7 @@
             <li id="nav-user-events" class='nav-tab'><a data-toggle="tab" href="#sectionB" class="activate-user-events-display">Your Events</a></li>
             <li id="nav-user-friends" class='nav-tab'><a data-toggle="tab" href="#sectionC">Friends</a></li>
             <li id="nav-find-all-users" class='nav-tab'><a data-toggle="tab" href="#sectionD" class="find-new-friends-tab">Find New Friends</a></li>
+            <li id="nav-events-search" class='nav-tab'><a data-toggle="tab" href="#sectionD" class="search-for-events">Search For Events</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id='nav-edit-user' class="nav-tab hidden"><a data-toggle="tab">Edit Your Profile</a></li>
@@ -59,6 +60,8 @@
           <button type="submit" class="btn btn-primary auth-form-element auth-btn" id='add-image-url' >
             Add Image
           </button>
+          <p class="pluse text-pulse hidden auth-form-element" id="edit-profile-fail-notification">Something went wrong, try again...</p>
+          <p class="pluse text-pulse hidden auth-form-element" id="edit-profile-success-notification">Your Profile Has Been Updated.</p>
           <div class="auth-form-element form-group">
             <textarea class="form-control" id="bio-input" rows="3" placeholder="Enter Your Bio Here"></textarea>
           </div>

@@ -63,6 +63,16 @@ const addHandlers = () => {
       $('#edit-profile-form').removeClass('hidden');
     });
 
+    $('#nav-events-search').on('click', function(event){
+      event.preventDefault();
+      $('#sign-up-form').addClass('hidden');
+      $('#sign-in-form').addClass('hidden');
+      $('#change-password-form').addClass('hidden');
+      $('#change-password-form').addClass('hidden');
+      $('#edit-profile-form').addClass('hidden');
+      $('#eventful-search-form').removeClass('hidden');
+    });
+
   // EVENT SEARCH EVENTS
   $('#eventful-search-form').on('submit', function(event){
     event.preventDefault();
