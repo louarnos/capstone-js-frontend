@@ -113,6 +113,16 @@ webpackJsonp([0],[
 	    $('#edit-profile-form').removeClass('hidden');
 	  });
 
+	  $('#nav-events-search').on('click', function (event) {
+	    event.preventDefault();
+	    $('#sign-up-form').addClass('hidden');
+	    $('#sign-in-form').addClass('hidden');
+	    $('#change-password-form').addClass('hidden');
+	    $('#change-password-form').addClass('hidden');
+	    $('#edit-profile-form').addClass('hidden');
+	    $('#eventful-search-form').removeClass('hidden');
+	  });
+
 	  // EVENT SEARCH EVENTS
 	  $('#eventful-search-form').on('submit', function (event) {
 	    event.preventDefault();
@@ -198,6 +208,7 @@ webpackJsonp([0],[
 
 	var app = {
 	  api: 'https://pacific-refuge-81971.herokuapp.com'
+	  // api: 'http://localhost:3000'
 	};
 
 	module.exports = app;
@@ -499,18 +510,40 @@ webpackJsonp([0],[
 
 	var editBioSuccess = function editBioSuccess(data) {
 	  console.log(data);
+	  $('#edit-profile-form').each(function () {
+	    this.reset();
+	  });
+	  $("#edit-profile-success-notification").removeClass('hidden');
+	  setTimeout(function () {
+	    $("#edit-profile-success-notification").addClass('hidden');
+	  }, 2000);
 	};
 
 	var editBioFailure = function editBioFailure(data) {
 	  console.log(data);
+	  $("#edit-profile-fail-notification").removeClass('hidden');
+	  setTimeout(function () {
+	    $("#edit-profile-fail-notification").addClass('hidden');
+	  }, 2000);
 	};
 
 	var addImgSuccess = function addImgSuccess(data) {
 	  console.log(data);
+	  $('#edit-profile-form').each(function () {
+	    this.reset();
+	  });
+	  $("#edit-profile-success-notification").removeClass('hidden');
+	  setTimeout(function () {
+	    $("#edit-profile-success-notification").addClass('hidden');
+	  }, 2000);
 	};
 
 	var addImgFailure = function addImgFailure(data) {
 	  console.log(data);
+	  $("#edit-profile-fail-notification").removeClass('hidden');
+	  setTimeout(function () {
+	    $("#edit-profile-fail-notification").addClass('hidden');
+	  }, 2000);
 	};
 
 	module.exports = {
@@ -15804,6 +15837,7 @@ webpackJsonp([0],[
 	  $('#user-nav').addClass('hidden');
 	  $('#nav-edit-user').addClass('hidden');
 	  $('#edit-profile-form').addClass('hidden');
+	  $('.bs-example').addClass('hidden');
 	  $('#sign-in-form').each(function () {
 	    this.reset();
 	  });
@@ -15814,6 +15848,9 @@ webpackJsonp([0],[
 	    this.reset();
 	  });
 	  $('#change-password-form').each(function () {
+	    this.reset();
+	  });
+	  $('#edit-profile-form').each(function () {
 	    this.reset();
 	  });
 	};
